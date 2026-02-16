@@ -144,6 +144,12 @@ h1 {
     font-weight: bold;
     text-transform: uppercase;
 }
+.monster-alias {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--tier-1);
+}
 
 .monster-tier {
     font-size: 0.75rem;
@@ -247,8 +253,8 @@ h1 {
         "evitarlo": "No bloquees su camino. Si suena la campana 3 veces, huye o cúbrete para resetear su ira."
     },
     {
-        "nombre": "Niño de los globos",
-        "alias": "",
+        "nombre": "Birthday boy",
+        "alias": "El chuky",
         "imagen": "https://static.wikia.nocookie.net/repo-2025horror/images/6/6c/Birthday_Boy_monster.png/revision/latest?cb=20251201222356",
         "comentario": "Deja globos por el mapa. Se vuelve furioso si explotan.",
         "nivel": 1,
@@ -275,7 +281,7 @@ h1 {
     },
     {
         "nombre": "Upscream",
-        "alias": "",
+        "alias": "Screamer",
         "imagen": "https://static.wikia.nocookie.net/repo-2025horror/images/2/25/Upscream_Transparent.png/revision/latest?cb=20250612100128",
         "comentario": "Una entidad que grita al detectar intrusos, alertando a otros peligros cercanos.",
         "nivel": 2,
@@ -293,7 +299,7 @@ h1 {
     },
     {
         "nombre": "Spewer",
-        "alias": "Todavía no sale",
+        "alias": "El máscara",
         "imagen": "https://static.wikia.nocookie.net/repo-2025horror/images/9/99/Spewer_Transparent.png/revision/latest?cb=20250612100158",
         "comentario": "Lanza sustancias peligrosas a corta distancia.",
         "nivel": 1,
@@ -302,7 +308,7 @@ h1 {
     },
     {
         "nombre": "Shadow Child",
-        "alias": "Slenderman bebé",
+        "alias": "Slenderman niño",
         "imagen": "https://static.wikia.nocookie.net/repo-2025horror/images/4/4e/Shadow_Child_Transparent.png/revision/latest?cb=20250612054715",
         "comentario": "Aparece cuando menos lo esperas, reaccionando agresivamente si se le mira fijamente.",
         "nivel": 1,
@@ -347,7 +353,7 @@ h1 {
     },
     {
         "nombre": "Oogly",
-        "alias": "",
+        "alias": "El holandés volador",
         "imagen": "https://static.wikia.nocookie.net/repo-2025horror/images/4/43/Oogly_monster.png/revision/latest?cb=20251201222007",
         "comentario": "Vuela sobre el área buscando objetivos, pero ignora a los que están agachados.",
         "nivel": 2,
@@ -497,9 +503,11 @@ h1 {
     function displayMonsters(filter = '') {
     monsterList.innerHTML = '';
     
-    let filtered = monsters.filter(m => 
-        m.nombre.toLowerCase().includes(filter.toLowerCase())
-    );
+        let filtered = monsters.filter(m => 
+            m.nombre.toLowerCase().includes(filter.toLowerCase()) ||
+            m.alias.toLowerCase().includes(filter.toLowerCase())
+        );
+    }
 
     
     filtered.sort((a, b) => a.nivel - b.nivel);
@@ -523,7 +531,7 @@ h1 {
             ${imageHtml}
             <div class="card-content">
                 <div class="card-header">
-                    <span class="monster-name">${m.nombre}</span> - <span class="monster-name">${m.alias}</span>
+                    <span class="monster-name">${m.nombre} - class="monster-alias">${m.alias}</span>
                     <span class="monster-tier">TIER ${m.nivel}</span>
                 </div>
                 <div class="commentary">"${m.comentario}"</div>
