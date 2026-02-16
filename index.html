@@ -531,7 +531,9 @@ h1 {
             ${imageHtml}
             <div class="card-content">
                 <div class="card-header">
-                    <span class="monster-name">${m.nombre} - class="monster-alias">${m.alias}</span>
+                    <span class="monster-name">
+                      ${m.nombre} - <span class="monster-alias">${m.alias}</span>
+                    </span>
                     <span class="monster-tier">TIER ${m.nivel}</span>
                 </div>
                 <div class="commentary">"${m.comentario}"</div>
